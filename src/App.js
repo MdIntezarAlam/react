@@ -1,27 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const App = () => {
-  const receiveDataFromWebView = () => {
-    const data = "Data from React JS to React Native";
-    window.ReactNativeWebView.postMessage(data);
-  };
+function App() {
+  const [receivedData, setReceivedData] = useState("");
+
+  useEffect(() => {
+    window.addEventListener("message", (event) => {
+      if (event.data) {
+        try {
+          const message = JSON.parse(event.data);
+          setReceivedData(message.data);
+        } catch (error) {
+          console.error("Error parsing JSON:", error);
+        }
+      }
+    });
+  }, []);
 
   return (
     <div className="App">
-      <h1>Fetch data from react-native</h1>
-      <button
-        style={{
-          width: "100px",
-          color: "#000",
-          padding: "20px",
-          borderRadius: "10px",
-        }}
-        onClick={receiveDataFromWebView}
-      >
-        Fetch
-      </button>
+      <h1>Access React Native Data in WebView</h1>
+      <p>Data from React Native: {receivedData}</p>
     </div>
   );
-};
+}
 
 export default App;
