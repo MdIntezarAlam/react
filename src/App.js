@@ -7,12 +7,10 @@ function App() {
 
   const handleButtonClick = () => {
     alert(`Data from React Native: ${dataFromReactNative}`);
-    console.log(dataFromReactNative);
   };
 
   useEffect(() => {
     const data = window.dataFromReactNative;
-    console.log("Data retrieved from React Native:", data);
     if (data) {
       setDataFromReactNative(data);
     }
