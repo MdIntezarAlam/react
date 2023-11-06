@@ -1,39 +1,27 @@
-import { useState } from "react";
-import "./App.css";
-import { useEffect } from "react";
+import React from "react";
 
-function App() {
-  const [dataFromReactNative, setDataFromReactNative] = useState("");
-
-  const handleButtonClick = () => {
-    alert(`Data from React Native: ${dataFromReactNative}`);
+const App = () => {
+  const receiveDataFromWebView = () => {
+    const data = "Data from React JS to React Native";
+    window.ReactNativeWebView.postMessage(data);
   };
 
-  useEffect(() => {
-    const data = window.dataFromReactNative;
-    if (data) {
-      setDataFromReactNative(data);
-    }
-  }, []);
   return (
     <div className="App">
-      <div className="container">
-        <button
-          style={{
-            backgroundColor: "orange",
-            color: "#000",
-            width: "50%",
-            padding: "20px",
-            borderRadius: "10px",
-          }}
-          onClick={handleButtonClick}
-        >
-          Fetch data from react-native-cli
-        </button>
-        <div>Front-end React js</div>
-      </div>
+      <h1>Fetch data from react-native</h1>
+      <button
+        style={{
+          width: "100px",
+          color: "#000",
+          padding: "20px",
+          borderRadius: "10px",
+        }}
+        onClick={receiveDataFromWebView}
+      >
+        Fetch
+      </button>
     </div>
   );
-}
+};
 
 export default App;
