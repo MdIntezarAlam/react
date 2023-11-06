@@ -1,6 +1,22 @@
+import { useState } from "react";
 import "./App.css";
+import { useEffect } from "react";
 
 function App() {
+  const [dataFromReactNative, setDataFromReactNative] = useState("");
+
+  const handleButtonClick = () => {
+    alert(`Data from React Native: ${dataFromReactNative}`);
+    console.log(dataFromReactNative);
+  };
+
+  useEffect(() => {
+    const data = window.dataFromReactNative;
+    console.log("Data retrieved from React Native:", data);
+    if (data) {
+      setDataFromReactNative(data);
+    }
+  }, []);
   return (
     <div className="App">
       <div className="container">
@@ -12,6 +28,7 @@ function App() {
             padding: "20px",
             borderRadius: "10px",
           }}
+          onClick={handleButtonClick}
         >
           Fetch data from react-native-cli
         </button>
