@@ -21,7 +21,7 @@ function App() {
         <button
           style={{
             backgroundColor: "orange",
-            color: "#fff",
+            color: "#000",
             width: "50%",
             padding: "20px",
             borderRadius: "10px",
@@ -30,12 +30,7 @@ function App() {
         >
           Fetch data from react-native-cli
         </button>
-        <div>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          e Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by
-          Cicero, written in 45 BC. amet...'
-        </div>
+        <div>Front-end React js</div>
       </div>
     </div>
   );
