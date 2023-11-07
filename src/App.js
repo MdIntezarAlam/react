@@ -22,17 +22,15 @@ function App() {
           style={{
             backgroundColor: "orange",
             color: "#000",
-            width: "50%",
+            width: "100%",
             padding: "20px",
             borderRadius: "10px",
           }}
           onClick={handleButtonClick}
         >
-          Fetch data from react-native-cli
+          Fetch data
         </button>
-        <div>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-        </div>
+        <div style={{ color: "#fff" }}>data:{dataFromReactNative}</div>
       </div>
     </div>
   );
