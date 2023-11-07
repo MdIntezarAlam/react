@@ -1,25 +1,39 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
+import "./App.css";
+import { useEffect } from "react";
 
 function App() {
-  const [receivedData, setReceivedData] = useState("");
+  const [dataFromReactNative, setDataFromReactNative] = useState("");
+
+  const handleButtonClick = () => {
+    alert(`Data from React Native: ${dataFromReactNative}`);
+  };
 
   useEffect(() => {
-    window.addEventListener("message", (event) => {
-      if (event.data) {
-        try {
-          const message = JSON.parse(event.data);
-          setReceivedData(message.data);
-        } catch (error) {
-          console.error("Error parsing JSON:", error);
-        }
-      }
-    });
+    const data = window.dataFromReactNative;
+    if (data) {
+      setDataFromReactNative(data);
+    }
   }, []);
-
   return (
     <div className="App">
-      <h1>Access React Native Data in WebView</h1>
-      <p>Data from React Native: {receivedData}</p>
+      <div className="container">
+        <button
+          style={{
+            backgroundColor: "orange",
+            color: "#000",
+            width: "50%",
+            padding: "20px",
+            borderRadius: "10px",
+          }}
+          onClick={handleButtonClick}
+        >
+          Fetch data from react-native-cli
+        </button>
+        <div>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+        </div>
+      </div>
     </div>
   );
 }
