@@ -3,18 +3,13 @@ import "./App.css";
 import { useEffect } from "react";
 
 function App() {
-  const [dataFromReactNative, setDataFromReactNative] = useState("");
-
   const handleButtonClick = () => {
-    alert(`Data from React Native: ${dataFromReactNative}`);
+    window.addEventListener("message", (message) => {
+      console.log(message.data);
+      window.ReactNativeWebView.postMessage("Client received data");
+    });
   };
 
-  useEffect(() => {
-    const data = window.dataFromReactNative;
-    if (data) {
-      setDataFromReactNative(data);
-    }
-  }, []);
   return (
     <div className="App">
       <div className="container">
@@ -28,9 +23,8 @@ function App() {
           }}
           onClick={handleButtonClick}
         >
-          Fetch data
+          Fetch react-native data
         </button>
-        <div style={{ color: "#fff" }}>data:{dataFromReactNative}</div>
       </div>
     </div>
   );
